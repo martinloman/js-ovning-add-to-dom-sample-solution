@@ -125,3 +125,21 @@ table.insertAdjacentHTML(
 // Här läggs tabellen table (ett element) in i shoppingCartContainer med metoden .append()
 // Det är först nu den läggs in i DOMen och blir synlig i webbläsaren.
 shoppingCartContainer.append(table)
+
+// Extra funktionalitet. Eventlyssnare för Ta bort-knapparna
+
+const removeButtons = document.getElementsByClassName("remove")
+for (let index = 0; index < removeButtons.length; index++) {
+  const button = removeButtons[index]
+
+  button.addEventListener("click", function (event) {
+    console.log("Klickade knappen: ", event.target)
+
+    // Hitta den tabellrad som knappen ligger på
+    const tableRow = event.target.parentElement.parentElement
+    console.log("Tabellraden: ", tableRow)
+
+    // Ta bort raden
+    tableRow.remove()
+  })
+}
